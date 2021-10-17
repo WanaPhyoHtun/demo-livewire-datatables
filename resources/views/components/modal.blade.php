@@ -1,6 +1,6 @@
-<div x-data="{ open: {{ isset($open) && $open ? 'true' : 'false' }}, working: false }" x-cloak wire:key="delete-{{ $value }}">
+<div x-data="{ open: {{ isset($open) && $open ? 'true' : 'false' }}, working: false }" x-cloak wire:key="{{ $value }}">
     <span x-on:click="open = true">
-        <button class="p-1 text-red-600 rounded hover:bg-red-600 hover:text-white"><x-icons.trash /></button>
+        {{ $trigger }}
     </span>
 
     <div x-show="open"
@@ -31,24 +31,10 @@
             <div class="w-full">
                 <div class="mt-3 text-center">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        {{ __('Delete') }} {{ $value }}
+                        {{ __('Edit') }} {{ $value }}
                     </h3>
                     <div class="mt-2">
-                        <div class="mt-10 text-gray-700">
-                            {{ __('Are you sure?')}}
-                        </div>
-                        <div class="mt-10 flex justify-center">
-                            <span class="mr-2">
-                                <button x-on:click="open = false" x-bind:disabled="working" class="w-32 shadow-sm inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:border-gray-700 focus:shadow-outline-teal active:bg-gray-700 transition ease-in-out duration-150">
-                                    {{ __('No')}}
-                                </button>
-                            </span>
-                            <span x-on:click="working = !working">
-                                <button wire:click="delete({{ $value }})" class="w-32 shadow-sm inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:border-red-700 focus:shadow-outline-teal active:bg-red-700 transition ease-in-out duration-150">
-                                    {{ __('Yes')}}
-                                </button>
-                            </span>
-                        </div>
+                        {{ $slot }}
                     </div>
                 </div>
             </div>

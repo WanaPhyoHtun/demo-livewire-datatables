@@ -30,10 +30,7 @@
         "nunomaduro/collision": "^5.10.0",
         "phpunit/phpunit": "^9.5.10"
     },
-    "repositories": [{
-        "type": "vcs",
-        "url": "https://github.com/MedicOneSystems/livewire-datatables"
-    }],
+    "repositories": [],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
